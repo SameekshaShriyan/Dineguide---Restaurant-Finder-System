@@ -1,0 +1,11 @@
+.admin-wrap{ padding:20px; }
+.form{ background:#fff; padding:16px; border-radius:8px; box-shadow:0 6px 20px rgba(0,0,0,0.03); margin-bottom:20px; max-width:600px; }
+.form input{ display:block; width:100%; margin:6px 0; padding:8px; border-radius:6px; border:1px solid #ddd; }
+.actions{ margin-top:8px; display:flex; gap:8px; }
+.list .cards{ display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; }
+.card{ width:320px; border-radius:10px; overflow:hidden; background:#fff; box-shadow:0 8px 24px rgba(12,38,26,0.03); }
+.card img{ width:100%; height:160px; object-fit:cover; }
+.meta{ padding:10px; }
+.reviews{ padding:10px; background:#fafafa; border-top:1px solid #efefef; }
+.rev{ border-bottom:1px dashed #e6e6e6; padding:8px 0; }
+.comment{ margin:6px 0; color:#333; }

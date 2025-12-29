@@ -1,0 +1,43 @@
+<div class="admin-wrap">
+  <h2>Admin Dashboard</h2>
+
+  <div class="form">
+    <h3>{{ editing ? 'Edit Restaurant' : 'Add Restaurant' }}</h3>
+    <input placeholder="Name" [(ngModel)]="newRestaurant.name" />
+    <input placeholder="Location" [(ngModel)]="newRestaurant.location" />
+    <input placeholder="Cuisine" [(ngModel)]="newRestaurant.cuisine" />
+    <input placeholder="Image URL" [(ngModel)]="newRestaurant.image" />
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="saveRestaurant()">Save</button>
+      <button mat-button (click)="cancelEdit()" *ngIf="editing">Cancel</button>
+    </div>
+  </div>
+
+  <div class="list">
+    <h3>Restaurants</h3>
+    <div class="cards">
+      <div class="card" *ngFor="let r of restaurants">
+        <img [src]="r.image || 'https://via.placeholder.com/300x180'" alt="{{r.name}}" />
+        <div class="meta">
+          <h4>{{ r.name }}</h4>
+          <p>{{ r.cuisine }} • {{ r.location }}</p>
+          <div class="btns">
+            <button mat-stroked-button color="primary" (click)="edit(r)">Edit</button>
+            <button mat-stroked-button color="warn" (click)="deleteRestaurant(r._id)">Delete</button>
+          </div>
+        </div>
+
+        <div class="reviews" *ngIf="r.reviews?.length">
+          <h5>Reviews</h5>
+          <div class="rev" *ngFor="let rev of r.reviews">
+            <div><strong>{{ rev.username || rev.user || rev.userName || 'Anon' }}</strong>
+              — ⭐ {{ rev.rating }} <span class="date">{{ rev.date | date:'short' }}</span>
+            </div>
+            <div class="comment">{{ rev.comment }}</div>
+            <button mat-button color="warn" (click)="deleteReview(r._id, rev._id)">Delete review</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

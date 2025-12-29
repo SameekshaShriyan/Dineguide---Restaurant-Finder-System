@@ -1,0 +1,35 @@
+<!-- login.component.html -->
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <mat-card-header>
+      <mat-card-title class="title">Welcome back</mat-card-title>
+      <mat-card-subtitle>Login to continue to DineGuide</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form (ngSubmit)="onLogin()" class="auth-form" autocomplete="off">
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [(ngModel)]="email" name="email" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" [(ngModel)]="password" name="password" required />
+        </mat-form-field>
+
+        <div class="error" *ngIf="error">{{ error }}</div>
+
+        <button mat-raised-button color="primary" class="full" type="submit" [disabled]="loading">
+          <span *ngIf="!loading">Login</span>
+          <mat-progress-spinner *ngIf="loading" diameter="20" mode="indeterminate"></mat-progress-spinner>
+        </button>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="switch">
+      <span>Don't have an account?</span>
+      <a mat-button color="accent" routerLink="/register">Register</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

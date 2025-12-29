@@ -1,0 +1,41 @@
+<div class="restaurant-container">
+  <h2 class="page-title">🍽️ Restaurant List</h2>
+
+  <div class="restaurant-grid">
+    <div class="restaurant-card" *ngFor="let r of restaurants">
+
+      <!-- Restaurant Image -->
+      <img class="restaurant-img" [src]="r.image || 'https://via.placeholder.com/300x180'" alt="{{ r.name }}" />
+
+      <div class="restaurant-info">
+        <h3>{{ r.name }}</h3>
+        <p class="muted">{{ r.cuisine }} • {{ r.location }}</p>
+
+        <!-- Rating Display -->
+        <div class="rating-row">
+          ⭐ {{ averageRating(r.reviews) }} / 5
+          <span class="count">({{ r.reviews?.length || 0 }} reviews)</span>
+        </div>
+      </div>
+
+      <!-- REVIEW FORM (only for normal user) -->
+      <div *ngIf="userRole === 'user'" class="review-box">
+        <select [(ngModel)]="reviewInputs[r._id].rating">
+          <option *ngFor="let n of [5,4,3,2,1]" [value]="n">{{n}} ⭐</option>
+        </select>
+        <textarea [(ngModel)]="reviewInputs[r._id].comment" placeholder="Write a review..."></textarea>
+        <button class="btn" (click)="submitReview(r._id)">Submit</button>
+      </div>
+
+      <!-- SHOW EXISTING REVIEWS -->
+      <div class="review-list" *ngIf="r.reviews?.length">
+        <div class="rev" *ngFor="let rev of r.reviews">
+          <strong>{{ rev.username }}</strong> – ⭐ {{ rev.rating }}
+          <div class="comment">{{ rev.comment }}</div>
+          <div class="date">{{ rev.date | date:'medium' }}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

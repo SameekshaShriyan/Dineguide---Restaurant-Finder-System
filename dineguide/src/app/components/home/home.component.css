@@ -1,0 +1,15 @@
+.home-wrapper {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.home-wrapper h1 {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.home-wrapper p {
+  font-size: 18px;
+  color: #4b5563;
+  margin-bottom: 24px;
+}

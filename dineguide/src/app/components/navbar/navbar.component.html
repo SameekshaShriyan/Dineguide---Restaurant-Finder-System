@@ -1,0 +1,11 @@
+<nav class="navbar" *ngIf="isLoggedIn()">
+  <div class="logo">🍽️ DineGuide</div>
+
+  <div class="nav-links">
+    <a routerLink="/restaurants" *ngIf="userRole === 'user'">Restaurants</a>
+    <a routerLink="/admin" *ngIf="userRole === 'admin'">Admin Dashboard</a>
+
+    <span class="welcome">Hi, {{ username }} ({{ userRole }})</span>
+    <button mat-button color="warn" (click)="logout()">Logout</button>
+  </div>
+</nav>

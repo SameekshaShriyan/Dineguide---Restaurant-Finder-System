@@ -1,0 +1,4 @@
+.auth-container{ min-height: calc(100vh - 80px); display:flex; align-items:center; justify-content:center; padding:24px; background: #f6fffb; }
+.auth-card{ width:420px; padding-bottom:6px; border-radius:12px; }
+.full{ width:100%; margin-bottom:8px; }
+.error{ color:#d32f2f; font-size:13px; margin-bottom:6px; }
